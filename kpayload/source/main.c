@@ -155,9 +155,12 @@ PAYLOAD_CODE void my_entrypoint()
 	resolve_kdlsym();
 	install_fself_hooks();
 	install_fpkg_hooks();
+	
+#if 0
 	install_patches();
 	install_syscall_hooks();
 	shellcore_patch();
+#endif
 }
 
 struct {
