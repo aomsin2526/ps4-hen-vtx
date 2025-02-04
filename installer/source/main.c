@@ -32,6 +32,8 @@ int install_payload(struct thread *td, struct install_payload_args* args)
 	uint64_t cr0 = readCr0();
 	writeCr0(cr0 & ~X86_CR0_WP);
 
+#if 1
+
 	// Enable UART
 	kmem = (uint8_t *)&kernel_base[enable_uart_patch];
 	kmem[0] = 0x00;
@@ -218,6 +220,8 @@ int install_payload(struct thread *td, struct install_payload_args* args)
 	kmem[1] = 0x00;
 	kmem[2] = 0x00;
 	kmem[3] = 0x00;
+
+#endif
 
 	// install kpayload
 	memset(payload_buffer, 0, PAGE_SIZE);
